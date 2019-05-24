@@ -1,0 +1,23 @@
+      #gameCanvas {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      #score {
+		position: absolute;
+		font-size: 40px;
+        font-family: 'Antic Slab', serif;
+        top: 20%;
+        left: 40%;
+        transform: translate(-50%, -50%);
+      }
+	    #time {
+		position: absolute;
+		font-size: 40px;
+        font-family: 'Antic Slab', serif;
+        top: 20%;
+        left: 60%;
+        transform: translate(-50%, -50%);
+      }

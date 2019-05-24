@@ -4,9 +4,10 @@
     <title>Snake Game</title>
 	<meta charset="UTF-8">
     <link href="https://fonts.googleapis.com/css?family=Antic+Slab" rel="stylesheet">
+	<link rel="stylesheet" href="css/style.css">
 	<audio id="myAudio">
-	<source src="stereo madness.ogg" type="audio/ogg">
-	<source src="stereo madness.mp3" type="audio/mpeg">
+	<source src="sons/stereo madness.ogg" type="audio/ogg">
+	<source src="sons/stereo madness.mp3" type="audio/mpeg">
 	</audio>
   </head>
 
@@ -16,33 +17,9 @@
 	<div id="time">0</div>
     <canvas id="gameCanvas" width="300" height="300"></canvas>
 
-    <style>
-      #gameCanvas {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-      }
 
-      #score {
-		position: absolute;
-		font-size: 40px;
-        font-family: 'Antic Slab', serif;
-        top: 20%;
-        left: 40%;
-        transform: translate(-50%, -50%);
-      }
-	    #time {
-		position: absolute;
-		font-size: 40px;
-        font-family: 'Antic Slab', serif;
-        top: 20%;
-        left: 60%;
-        transform: translate(-50%, -50%);
-      }
-    </style>
- 
-	<script  src="index.js"></script>
+     
+	<script  src="js/index.js"></script>
 
   </body>
 </html>
