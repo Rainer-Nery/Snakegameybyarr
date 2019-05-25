@@ -22,6 +22,7 @@
       {x: 110, y: 150}
     ]
 	
+  //Audios
 	var aud = document.getElementById("myAudio");
 	var death = document.getElementById("death"); 
 	var pckup = document.getElementById("pickup"); 	
