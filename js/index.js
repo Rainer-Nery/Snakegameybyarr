@@ -22,7 +22,9 @@
       {x: 110, y: 150}
     ]
 	
-	var aud = document.getElementById("myAudio"); 
+	var aud = document.getElementById("myAudio");
+	var death = document.getElementById("death"); 
+	var pckup = document.getElementById("pickup"); 	
 
 function playAudio() { 
   aud.play(); 
@@ -63,7 +65,8 @@ function pauseAudio() {
     function main() {
      
 	  // Se o jogo terminar tera retorno para parar o jogo
-      if (didGameEnd()){ 
+      if (didGameEnd()){
+	  death.play();
 	  pauseAudio();
 	  return;
 	  }
@@ -122,6 +125,7 @@ function pauseAudio() {
       if (didEatFood) {
         // Increase score
         score += 10;
+		pckup.play();
         // Display score on screen
         document.getElementById('score').innerHTML = score;
 
