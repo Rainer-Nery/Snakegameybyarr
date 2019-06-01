@@ -13,7 +13,14 @@
 	var time = dTime = 0;
 	var duration = 60000;
 	var font = fontSize + "px " + fontType;
+	
+	//Score ranking
+	var actualPlayer;
+	var ranking;
+	var actualScore = 0;
+	var playerScore = {name : "", score : 0};
 
+	
     let snake = [
       {x: 150, y: 150},
       {x: 140, y: 150},
@@ -53,7 +60,7 @@ function pauseAudio() {
     const gameCanvas = document.getElementById("gameCanvas");
     const ctx = gameCanvas.getContext("2d");
     // Start
-    main();
+    //main();
     // Criar a primeira Comida no jogo.
     createFood();
     // Chama a função "changeDirection" toda vez que uma tecla é pressionada.
@@ -67,6 +74,9 @@ function pauseAudio() {
      
 	  // Se o jogo terminar tera retorno para parar o jogo
       if (didGameEnd()){
+		saveScore();
+		showRanking();
+		//resetgame();
 	  death.play();
 	  pauseAudio();
 	  return;
@@ -76,12 +86,14 @@ function pauseAudio() {
         changingDirection = false;
         clearCanvas();
         drawFood();
+		
         advanceSnake();
         drawSnake();
 		playAudio()
         // Call game again
         main();
-      }, GAME_SPEED)
+      }
+	  , GAME_SPEED)
 	  
     }
 
@@ -89,6 +101,15 @@ function pauseAudio() {
      * Change the background colour of the canvas to CANVAS_BACKGROUND_COLOUR and
      * draw a border around it
      */
+	 function resetgame()
+	 {
+		 <!--
+function timedRefresh(timeoutPeriod) {
+	setTimeout("location.reload(true);",timeoutPeriod);
+}
+
+window.onload = timedRefresh(2000);
+	 }
     function clearCanvas() {
       //  Select the colour to fill the drawing
       ctx.fillStyle = CANVAS_BACKGROUND_COLOUR;
@@ -126,6 +147,7 @@ function pauseAudio() {
       if (didEatFood) {
         // Increase score
         score += 10;
+		actualScore += 10;
 		pckup.play();
         // Display score on screen
         document.getElementById('score').innerHTML = score;
@@ -252,6 +274,52 @@ function animate() {
      * For example if the the direction is 'right' it cannot become 'left'
      * @param { object } event - The keydown event
      */
+	 
+	 //Score
+	 function saveScore() {
+
+    // Retrieving data:
+    var jsonFile = localStorage.getItem("rankingJSON4");
+    playerScore.name = actualPlayer
+    playerScore.score = actualScore;
+
+    if (jsonFile != null) {
+        ranking = JSON.parse(jsonFile);
+    } else { //Qdo ainda não existe ranking
+        ranking = {players:[]};
+    }
+    var pontuacoes = ranking.players;
+    pontuacoes.push(playerScore);
+    ranking.players = pontuacoes;
+
+    var objJSON = JSON.stringify(ranking);
+    localStorage.setItem("rankingJSON4", objJSON);
+
+}
+
+function showRanking() {
+    var text = "<h2> Ranking: </h2>";
+    var pontuacoes = ranking.players;
+
+    for (i in pontuacoes) {
+        text = text + "Nome: " + pontuacoes[i].name + " - Pontos: " + pontuacoes[i].score + "<br>";
+    }
+
+    document.getElementById("ranking").innerHTML = text;
+}
+
+/*              -----------------  */
+
+
+
+function init() {
+    actualPlayer = document.getElementById("player").value;
+    document.getElementById("player").value = "";
+    document.getElementById("iniciar").disabled = true;
+    //startGame()
+	main()
+}
+	
     function changeDirection(event) {
       const LEFT_KEY = 37;
       const RIGHT_KEY = 39;
@@ -294,5 +362,4 @@ function animate() {
         dx = 0;
         dy = 10;
       }
-    } animate();
-
+    } 	animate();
