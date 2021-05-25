@@ -1,39 +1,46 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Snake Game</title>
+
+<head>
+	<title>Snake Game</title>
 	<meta charset="UTF-8">
-    <link href="https://fonts.googleapis.com/css?family=Antic+Slab" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Antic+Slab" rel="stylesheet">
 	<audio id="myAudio">
-	
-	<source src="sons/madness.mp3" type="audio/mpeg">
+
+		<source src="sons/madness.mp3" type="audio/mpeg">
 	</audio>
-	
+
 	<audio id="death">
-	
-	<source src="sons/morte.mp3" type="audio/mpeg">
+
+		<source src="sons/morte.mp3" type="audio/mpeg">
 	</audio>
-	
+
 	<audio id="pickup">
-	
-	<source src="sons/pickup.mp3" type="audio/mpeg">
+
+		<source src="sons/pickup.mp3" type="audio/mpeg">
 	</audio>
-  </head>
+</head>
 
-  <body>
-	 
-	 <div style="text-align:center;width:480px;">	<br>
-            <p> Nome: <input type="text" id="player"><button id="iniciar" onclick="init()" >INICIAR</button> </p>    
-            <br>
-            <p id="ranking"></p>
-			</div>
-    <div id="score">0</div>
+<body class="back">
+
+	<div style="text-align:center;width:480px;"> <br>
+		<p class="name"> Name:
+			<input type="text" id="player">
+			<label id="errolabel" for="player" style="color: red; font-size: 75%; visibility: hidden; padding-top: .3em;">INSIRA UM NOME</label>
+		</p>
+			
+		<button id="iniciar" class="button" *ngif onclick="startButton()">START</button>
+		<br>
+	<p id="ranking"></p>
+	</div>
+	<div id="score">0</div>
 	<div id="time">0</div>
-    <canvas id="gameCanvas" width="300" height="300"></canvas>
+	<canvas id="gameCanvas" width="300" height="300"></canvas>
 
-   <link rel="stylesheet" href="css/style.css">
- 
-	<script  src="js/index.js"></script>
+	<link rel="stylesheet" href="css/style.css">
 
-  </body>
+	<script src="js/index.js"></script>
+
+</body>
+
 </html>
